@@ -1,0 +1,15 @@
+<div class="post" *ngIf="postInfo">
+  <div class="post__head">
+    {{ postInfo.title }}
+    <div>by User {{ postInfo.userId}}</div>
+  </div>
+  <div class="post__body">
+    {{ postInfo.body }}
+  </div>
+  <div class="post__foot">
+    Comments:
+    <ng-container *ngFor="let comment of filteredComments">
+      <app-comment [commentInfo]="comment"></app-comment>
+    </ng-container>
+  </div>
+</div>
