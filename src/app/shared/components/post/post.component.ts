@@ -29,7 +29,10 @@ export class PostComponent implements OnInit {
   ngOnInit(): void {
     this.postId = Number(this.route.snapshot.paramMap.get('id'));
     this.API.getPost(this.postId).subscribe(post => this.postInfo = post);
-    this.API.getComments(this.postId).subscribe(comments => this.comments = comments);
+    this.API.getComments(this.postId).subscribe(comments => {
+      this.comments = comments;
+      this.onSearchboxInput();
+    });
 
     this.searchInput$.pipe(
       debounceTime(300),
@@ -41,14 +44,15 @@ export class PostComponent implements OnInit {
       }
 
       this.filteredComments = this.comments.filter(comment => {
-        return comment.name.includes(keyword) || comment.email.includes(keyword) || comment.body.includes(keyword);
+        return comment.name.toLowerCase().includes(keyword.toLowerCase())
+          || comment.email.toLowerCase().includes(keyword.toLowerCase())
+          || comment.body.toLowerCase().includes(keyword.toLowerCase());
       });
     });
 
-    this.onSearchboxInput();
   }
 
-  onSearchboxInput(): void {
+  onSearchboxInput($event?: Event): void {
     this.searchInput$.next(this.searchTxt);
   }
 }

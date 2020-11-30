@@ -1,0 +1,20 @@
+.comment {
+  padding: 2.4rem;
+
+  &__head {
+    color: #666;
+    padding: .8rem 0;
+  }
+
+  &__body {
+    padding: 1.6rem 0;
+  }
+
+  &__foot {
+    color: #888;
+    font-size: 1.2rem;
+    padding: .8rem 0;
+    text-align: right;
+    font-style: italic;
+  }
+}

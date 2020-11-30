@@ -1,15 +1,30 @@
 <div class="post" *ngIf="postInfo">
   <div class="post__head">
-    {{ postInfo.title }}
-    <div>by User {{ postInfo.userId}}</div>
+    <h1 class="post__title">
+      {{ postInfo.title }}
+    </h1>
+    <div class="post__author">by User {{ postInfo.userId}}</div>
   </div>
   <div class="post__body">
     {{ postInfo.body }}
   </div>
   <div class="post__foot">
-    Comments:
-    <ng-container *ngFor="let comment of filteredComments">
-      <app-comment [commentInfo]="comment"></app-comment>
-    </ng-container>
+    <div class="post__comments-header">
+      <span>Comments:</span>
+      <div class="post__comment-filter">
+        <input class="post__searchbox" type="text" placeholder="Search in comments"
+          [(ngModel)]="searchTxt"
+          (input)="onSearchboxInput($event)"
+        >
+      </div>
+    </div>
+    <div class="post__comments">
+      <div class="post__comment-placeholder" *ngIf="filteredComments.length < 1">
+        No comments
+      </div>
+      <ng-container *ngFor="let comment of filteredComments">
+        <app-comment [commentInfo]="comment"></app-comment>
+      </ng-container>
+    </div>
   </div>
 </div>

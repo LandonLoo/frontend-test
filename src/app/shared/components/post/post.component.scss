@@ -1,0 +1,62 @@
+.post {
+  min-width: 250px;
+  max-width: 980px;
+  background-color: #fff;
+  margin: 0 auto;
+  padding: 3em 4em;
+
+  &__head {
+    margin-bottom: 2.4rem;
+  }
+    &__title {
+      text-transform: capitalize;
+      margin-bottom: .5em;
+    }
+    &__author {
+      color: #888;
+    }
+
+  &__body {
+    min-height: 100px;
+    margin-bottom: 1.6rem;
+    padding: 2.4rem 0;
+  }
+
+  &__foot {
+    padding: .8rem 0;
+  }
+
+    &__comments-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &__searchbox {
+      padding: .8rem 1.6rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    &__comments {
+      padding: 1.6rem 0;
+    }
+
+    &__comment-placeholder {
+      color: #aaa;
+      text-align: center;
+      font-size: 1.4rem;
+      padding: 1.6rem;
+      font-style: italic;
+    }
+
+    app-comment {
+      display: block;
+      margin: 2.4rem 0;
+      border-top: 1px solid #dfdfdf;
+
+      &:first-child {
+        border: 0 none;
+      }
+    }
+}
